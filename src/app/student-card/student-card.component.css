@@ -1,0 +1,83 @@
+.student-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.1s ease ;
+  }
+  
+  .student-card img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Hover effect for pop-out */
+  .student-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border: 2px solid #4484ce;
+  }
+  
+  .student-card:hover img {
+    transform: scale(1.1);
+  }
+  
+  /* Name and number text overlay */
+  .student-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Raleway';
+    font-size: 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .student-card:hover .student-info {
+    transform: translateY(0);
+  }
+
+
+
+  /* Mobile-specific adjustments */
+@media (pointer: coarse) {
+  .student-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Keep it square */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  }
+
+  .student-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .student-card:hover .student-info,
+  .student-info {
+    opacity: 1; /* Always visible on mobile */
+    transform: translateY(0); /* Show the name always */
+  }
+
+  .student-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    color: #fff;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 1em;
+    font-weight: bold;
+    opacity: 1; /* Always visible */
+    transform: translateY(0); /* Prevent animation from hiding it */
+    transition: none; /* Remove hover animation */
+  }
+}

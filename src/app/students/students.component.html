@@ -1,0 +1,7 @@
+<app-header></app-header>
+
+<div class="students-grid">
+    <app-student-card *ngFor="let student of students" [student]="student" (click)="showStudentDetails(student)"></app-student-card>
+</div>
+
+<app-student-detail [selectedStudent]="selectedStudent"></app-student-detail>

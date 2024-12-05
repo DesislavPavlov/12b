@@ -1,0 +1,46 @@
+<!-- <div class="overlay" *ngIf="selectedStudent" [@overlayAnimation] (click)="closeStudentDetails()"></div> -->
+
+<div class="student-detail" *ngIf="selectedStudent">
+    <button class="close-btn" (click)="closeStudentDetails()">✖</button>
+  
+    <div class="student-left">
+      <div class="carousel">
+        <div class="carousel-images">
+          <img
+            *ngFor="let imgSrc of selectedStudent.carouselImgSrcs; let i = index"
+            [src]="imgSrc"
+            [alt]="'Image ' + (i + 1)"
+            [class.active]="i === currentImageIndex"
+            
+            />
+        </div>
+        <!-- [@carouselAnimation]="i < currentImageIndex ? 'left' : i > currentImageIndex? 'right' : 'center'" -->
+  
+        <div class="carousel-controls">
+          <div class="carousel-buttons">
+              <button
+              *ngFor="let img of selectedStudent.carouselImgSrcs; let i = index"
+              (click)="selectImage(i)"
+              [class.active]="i === currentImageIndex"
+            ></button>
+          </div>
+          <button id="pause-button" [class.active]="isCarouselPaused" (click)="isCarouselPaused ? startAutoScroll() : stopAutoScroll()">&#9208;</button>
+        </div>
+      </div>
+  
+      <p id="detail-name">{{ selectedStudent.number }}. {{ selectedStudent.name }}</p>
+    </div>
+  
+    <div class="student-comments">
+      <blockquote>quote</blockquote>
+      <div class="comments">
+        <div class="comment" *ngFor="let comment of selectedStudent.comments">
+          <img [src]="comment.imgSrc" [alt]="comment.name">
+          <div class="comment-text">
+            <p class="commenter-name">{{ comment.name }}</p>
+            <p class="commenter-message">{{ comment.comment }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
